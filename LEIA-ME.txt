@@ -1,0 +1,13 @@
+ESTUDO CLARO — instalação
+1. Copie TODO o conteúdo desta pasta para o servidor (PHP 8+ com pdo_sqlite).
+2. Abra o endereço no navegador. O autoinstalador abre sozinho: verifica o servidor,
+   cria o banco SQLite (fora da pasta pública, se possível), o administrador e o conteúdo inicial.
+3. Ao terminar ele grava config.php e se bloqueia. Para reinstalar, apague config.php e a pasta de dados.
+Opcional: antes de copiar, crie um arquivo install.key (qualquer texto) ao lado do index.php;
+o instalador passa a exigir essa chave, e assim ninguém "instala primeiro" no seu lugar.
+Nginx: bloqueie o acesso web a inc/, config.php e à pasta de dados (o .htaccess só vale no Apache).
+Use HTTPS (necessário para instalar como app e para o modo offline).
+
+PACOTES DE ESTUDO
+O pacote Direito Administrativo (objetivo: aprovação na prova) acompanha o sistema em pacotes/direito-administrativo.json.
+Novos pacotes: Administração > Pacotes, cole ou envie um .json no mesmo formato (objetivo, assuntos, cartões e resumos visuais).
