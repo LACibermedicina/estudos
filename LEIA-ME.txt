@@ -1,0 +1,34 @@
+ESTUDO CLARO — instalação
+1. Copie TODO o conteúdo desta pasta para o servidor (PHP 8+ com pdo_sqlite).
+2. Abra o endereço no navegador. O autoinstalador abre sozinho: verifica o servidor,
+   cria o banco SQLite (fora da pasta pública, se possível), o administrador e o conteúdo inicial.
+3. Ao terminar ele grava config.php e se bloqueia. Para reinstalar, apague config.php e a pasta de dados.
+Opcional: antes de copiar, crie um arquivo install.key (qualquer texto) ao lado do index.php;
+o instalador passa a exigir essa chave, e assim ninguém "instala primeiro" no seu lugar.
+Nginx: bloqueie o acesso web a inc/, config.php e à pasta de dados (o .htaccess só vale no Apache).
+Use HTTPS (necessário para instalar como app e para o modo offline).
+
+PACOTES DE ESTUDO
+O pacote Direito Administrativo (objetivo: aprovação na prova) acompanha o sistema em pacotes/direito-administrativo.json.
+Novos pacotes: Administração > Pacotes, cole ou envie um .json no mesmo formato (objetivo, assuntos, cartões e resumos visuais).
+
+TRILHAS COM IA, IMPORTAR/EXPORTAR E METAS
+- Administração > IA: informe a chave da API da Anthropic, o modelo e o limite diário por usuário. Requer a extensão cURL do PHP.
+- Usuários criam trilhas por tema/objetivo, com materiais próprios (texto, .md, .pdf) ou a partir de vídeos (o servidor tenta obter a transcrição/legendas do YouTube; se não houver, cole a transcrição).
+- A geração roda em segundo plano e pesquisa fontes atuais na web. Confira sempre as referências (as não confirmadas vêm marcadas).
+- Exportar gera um arquivo .trilha.json (conteúdo, bibliografia, estratégia, progresso, prazo e metas) que pode ser importado de volta.
+- Desativar congela tempo e metas e deixa a trilha só para visualização. Excluir esconde a trilha do usuário; a exclusão definitiva e a restauração ficam em Administração > Exclusões.
+
+DUAS VERSÕES, COMUNIDADE E CONTINGÊNCIA DE IA
+- ESCOLHA ANTES DE COMEÇAR: index.php mostra a tela "Como você quer usar?" com duas opções: PORTAL (comunidade, computador e tablet) ou MOBILE ACESSÍVEL (celular, baixa visão). A escolha fica guardada; trocar: Mais > Trocar de versão (ou index.php?trocar=1). Entradas diretas: portal.php e acessivel.php.
+- O administrador define no instalador (ou em Administração > Versões) se oferece as duas ou só uma; com uma só, a tela de escolha é pulada.
+- Mesmo banco e mesma conta nas duas versões.
+- Trilhas: privadas, públicas ou compartilhadas com grupos de usuários (grupos entram por código de convite). Trilhas públicas podem ser estudadas ou copiadas; o progresso de cada pessoa é só dela. Biblioteca de materiais própria para alimentar a IA.
+- IA em contingência (Administração > IA): vários provedores em ordem de prioridade (Claude, compatíveis com OpenAI/OpenRouter/Groq/Ollama, Gemini). Falhou? Tenta o próximo; quem falha 2 vezes fica 10 min em pausa. Respostas de modelos diferentes são normalizadas para o formato do sistema.
+- Se nenhum provedor responder (ou nenhum estiver configurado), o usuário recebe o modo agente: copia o pedido para qualquer IA, cola a resposta e o sistema monta a trilha; ou cria um esqueleto sem IA. O mesmo vale para "Gerar mais cartões" em um assunto.
+- Modelos sem busca na web criam a trilha com as referências marcadas como "a confirmar".
+
+INSTALAÇÃO EM ASSISTENTE (5 passos)
+1 Servidor (verificação), 2 Administrador, 3 Versões oferecidas, 4 Agentes de IA com contingência, 5 Concluir.
+No passo 4 você adiciona vários agentes (Claude, OpenAI, Gemini, OpenRouter, modelo local...), define a prioridade, o papel de cada um (planejador ou redator) e testa cada um antes de instalar. A ordem de socorro é: agentes em sequência > modo agente (copiar o pedido para qualquer IA) > esqueleto sem IA.
+A criação de trilhas é orquestrada em etapas: preparar > planejar (agente planejador) > escrever assunto por assunto (agente redator) > montar. Um assunto que falhar vira rascunho em vez de derrubar a trilha.
